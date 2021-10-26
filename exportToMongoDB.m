@@ -1,4 +1,4 @@
-function toMongoDBDatabase(obj, exportVar)
+function exportToMongoDB(obj, exportVar)
     % Method to export an object which inclues a datetime variable
     % to a MongoDB database 
     %
