@@ -34,10 +34,10 @@ information
 full identifier:
 	* Don´t use:
 	import com.mongodb.client.MongoClients
-	client = MongoClients.create(.....)
+	`client = MongoClients.create(.....)`
 
 	* Instead use:
-	client = com.mongodb.client.MongoClients.create(.....)
+	`client = com.mongodb.client.MongoClients.create(.....)`
 
 ## POM file <a name="pom"></a>
 Generate a pom.xml file with the following structure:
