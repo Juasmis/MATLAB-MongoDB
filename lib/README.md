@@ -45,7 +45,7 @@ full identifier:
 
 ## POM file <a name="pom"></a>
 Generate a pom.xml file with the following structure:
-
+	```xml
 	<?xml version="1.0" encoding="UTF-8"?>
 	<project xmlns="http://maven.apache.org/POM/4.0.0"
 			 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -83,6 +83,7 @@ Generate a pom.xml file with the following structure:
 			    </plugins>
 	  </build>
 	</project>
+	```
 
 The important part to update/change is the `dependency` field, use [java lib](https://javalibs.com/)
 to find the correct fields for the particular needed library.
