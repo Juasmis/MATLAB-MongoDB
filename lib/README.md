@@ -39,7 +39,9 @@ full identifier:
 	```
 
 	* Instead use:
-	`client = com.mongodb.client.MongoClients.create(.....)`
+	```MATLAB
+	client = com.mongodb.client.MongoClients.create(.....)
+	```
 
 ## POM file <a name="pom"></a>
 Generate a pom.xml file with the following structure:
