@@ -39,8 +39,8 @@ A cleaner solution seems to export directly the data from MATLAB. To achieve thi
         "Outlet temperature of the source at the first effect",...
         "Feedwater temperature at the first effect",...
         "Feedwater flow at the first effect"];
-    sensor_ids  = ["TT-AQU-107a";"HW1TT21";"TE-DES-001";"FT-DES-003"];
-    units = ["ºC";"ºC";"ºC";"kg/s"];
+    sensor_ids   = ["TT-AQU-107a";"HW1TT21";"TE-DES-001";"FT-DES-003"];
+    units        = ["ºC";"ºC";"ºC";"kg/s"];
 
     for i=1:length(var_ids)
         medidas.(var_ids(i)) = struct(...
