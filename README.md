@@ -60,7 +60,9 @@ exportToMongoDB("localhost", 27017, "test_db", "test_col", var)
 ```
 
 3. Import data from database
+```MATLAB
 data_as_timetable = importFromMongoDB("localhost", 27017, "test_db", "test_col"); 
+```
 
 ### References
 1. [MATLAB Answers](https://www.mathworks.com/matlabcentral/answers/713843-can-i-load-java-classes-into-matlab-r2020b-using-maven)
