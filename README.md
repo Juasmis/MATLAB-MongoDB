@@ -9,7 +9,7 @@ timeStamp = datetime(dataFromDatabase.timeStamp, InputFormat = "uuuu-MM-dd'T'HH:
 The first one is not so trivial as it makes impossible to interact with TimeSeries mongoDB collections as well as limiting the time filtered queries on normal collections.
 
 ### Proposed alternative
-One alternative could be to access every new *document* inserted in the database and update it's `Date` field using MongoDB functions such as [updateOne](https://docs.mongodb.com/manual/reference/method/db.collection.updateOne/#mongodb-method-db.collection.updateOne), [updateMany](https://docs.mongodb.com/manual/reference/method/db.collection.updateMany/#mongodb-method-db.collection.updateMany) and [replaceOne](https://docs.mongodb.com/manual/reference/method/db.collection.replaceOne/#mongodb-method-db.collection.replaceOne). 
+One alternative could be to access every new *document* inserted in the database and update its `Date` field using MongoDB functions such as [updateOne](https://docs.mongodb.com/manual/reference/method/db.collection.updateOne/#mongodb-method-db.collection.updateOne), [updateMany](https://docs.mongodb.com/manual/reference/method/db.collection.updateMany/#mongodb-method-db.collection.updateMany) and [replaceOne](https://docs.mongodb.com/manual/reference/method/db.collection.replaceOne/#mongodb-method-db.collection.replaceOne). 
 
 A cleaner solution seems to export directly the data from MATLAB. To achieve this, [MATLAB's ability to make use of JAVA libraries](https://www.mathworks.com/help/matlab/matlab-engine-api-for-java.html) is taken advantage of.  
 ### Use
