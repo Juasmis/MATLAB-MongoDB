@@ -1,45 +1,43 @@
 # Manual to generate dependencies
-This will generate a single `.jar` file containing all the necessary libraries 
-for the use of the `ptOp` class, which allows to generate an *operationPoint*.
-Which can then be exported to a ***mongo database***. It also has a method to 
-import all the *operationPoints* from said database as a `timetable` in *MATLAB*.
+The idea is to generate a single `.jar` using a dependency manager which will automatically fetch all the required packages.
 
 ## Steps
 1. Download and install [Maven](https://maven.apache.org/)
 2. Generate a `pom.xml` file, see [POM file section](#pom) for more detailed 
 information
-3. Import in MATLAB using a function similar to:
-
-		function importLibraries(~)
-			% Method used by other methods of this class to import the
-			% necessary jar files for the libraries used
-			
-			currentDirectory = pwd;
-			librariesDirectory = fullfile(currentDirectory, "lib");
-			fileinfo = dir(librariesDirectory);
-			if isempty(fileinfo)
-				warning('Could not find "lib" folder in %s', librariesDirectory);
-			else
-				files = {fileinfo.name};
-				for i=1:length(files)
-					if ~strcmp(files{i}(1), '.') && contains(files{i}, ".jar")
-					    javaaddpath(fullfile( librariesDirectory, files{i} ));
-					    fprintf('Imported %s to java path\n', files{i});
-					end
+3. Import dependencies in MATLAB using a function similar to:
+	```MATLAB
+	function importLibraries()
+		% Method used to import the necessary jar files for the libraries used
+		
+		currentDirectory = pwd;
+		librariesDirectory = fullfile(currentDirectory, "lib");
+		fileinfo = dir(librariesDirectory);
+		if isempty(fileinfo)
+			warning('Could not find "lib" folder in %s', librariesDirectory);
+		else
+			files = {fileinfo.name};
+			for i=1:length(files)
+				% Filter out dot starting named files and include the 
+				% ones containing ".jar" extension 
+				if ~strcmp(files{i}(1), '.') && contains(files{i}, ".jar")
+					javaaddpath(fullfile( librariesDirectory, files{i} ));
+					fprintf('Imported %s to java path\n', files{i});
 				end
-				% End of for
 			end
-		   % End of method
+			% End of for
 		end
+		% End of method
+	end
+	```
 4. Do not import the classes or method inside MATLAB functions, instead use the
 full identifier:
+	# Don´t use:
+	import com.mongodb.client.MongoClients
+	client = MongoClients.create(.....)
 
-		# Don´t use:
-		import com.mongodb.client.MongoClients
-		client = MongoClients.create(.....)
-
-		# Use:
-		client = com.mongodb.client.MongoClients.create(.....)
+	# Instead se:
+	client = com.mongodb.client.MongoClients.create(.....)
 
 ## POM file <a name="pom"></a>
 Generate a pom.xml file with the following structure:
@@ -90,9 +88,7 @@ to find the correct fields for the particular needed library.
 
 
 1. [POM file structure](https://maven.apache.org/pom.html#Plugin_Repositories)
-2. [MATLAB Answers](https://www.mathworks.com/matlabcentral/answers/713843-can-i-load-java-classes-into-matlab-r2020b-using-maven)
-3. *Mongodb*, how to connect to a database using java driver: [ref1](https://mongodb.github.io/mongo-java-driver/4.1/driver/getting-started/quick-start/), [ref2](https://docs.mongodb.com/manual/reference/connection-string/)
-
-
+2. [MATLAB Answers](https://www.mathworks.com/matlabcentral/answers/713843-can-i-load-java-classes-into-matlab-r2020b-using-maven) Can I load Java classes into MATLAB R2020b using Maven? 
+3. [javalibs](https://javalibs.com/) Search Public Maven Repositories
 
 
