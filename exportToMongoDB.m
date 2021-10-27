@@ -1,15 +1,15 @@
-function exportToMongoDB(obj, exportVar)
+function exportToMongoDB(server, port, dbname, colname, exportVar)
     % Method to export an object which inclues a datetime variable
     % to a MongoDB database 
     %
     % Use:
-    % toMongoDBDatabase(obj, exportVar)
-
-    server = "localhost";
-    port   = 27017;
-    dbname = "exampleDatabase";
-    col    = "exampleCollection";
-
+    % toMongoDBDatabase(server, port, dbname, colname, exportVar)
+    % server     (string), IP address or hostname of the server hosting the database
+    % port       (int),    port used
+    % dbname     (string)  name of the database to access
+    % colname    (string)  collection name to load the data to
+    % exportVar  (struct)  MATLAB object to export to database
+    %
     % Neccesary java libraries: jdk8 (java.text.SimpleDateFormat)
     %                           bson (bson.types.*, bson.Dcoument)
     %                           mongdb (mongodb.*)
@@ -45,8 +45,8 @@ function exportToMongoDB(obj, exportVar)
     mongoClient = com.mongodb.client.MongoClients.create(...
         sprintf("mongodb://%s:%s", server, port));
     
-    db =  mongoClient.getDatabase(obj.dbname);
-    col = db.getCollection(obj.collection);
+    db =  mongoClient.getDatabase(dbname);
+    col = db.getCollection(colname);
 
     col.insertOne(obj_json_mongo);
 

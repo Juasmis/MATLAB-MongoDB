@@ -51,7 +51,17 @@ for i=1:length(var_ids)
 end
 ```
 Constructing a variable like this results in:
-![[alt text]](.screenshot.png "Data to store in database")
 
+<img src=".screenshot.png" width="500"/>
+
+2. Export variable to database:
+```MATLAB
+exportToMongoDB("localhost", 27017, "test_db", "test_col", var)
+```
+
+3. Import data from database
+data_as_timetable = importFromMongoDB("localhost", 27017, "test_db", "test_col"); 
 
 ### References
+1. [MATLAB Answers](https://www.mathworks.com/matlabcentral/answers/713843-can-i-load-java-classes-into-matlab-r2020b-using-maven)
+2. *Mongodb*, how to connect to a database using java driver: [ref1](https://mongodb.github.io/mongo-java-driver/4.1/driver/getting-started/quick-start/), [ref2](https://docs.mongodb.com/manual/reference/connection-string/)
