@@ -4,7 +4,7 @@ A more complete integration to import and export data from MATLAB to a Mongo dat
 ### Limitations of current official implementation
 The official Mongodb support ([documentation](https://www.mathworks.com/help/database/ug/import-and-export-matlab-objects-using-mongodb.html)) has an important limitation, MATLAB datetimes objects are not compatible with BSON dates. This means that exported MATLAB datetimes variables to the database will be formatted as string. Date type variables imported from the database will appear as string variables in the MATLAB workspace as well. This second situation can easily be solved with a code similar to:
 ```MATLAB
-timeStamp = datetime(dataFromDatabase.timeStamp, InputFormat = "uuuu-MM-dd'T'HH:mm:ss.SSS'Z'", Timezone  );
+timeStamp = datetime(dataFromDatabase.timeStamp, InputFormat = "uuuu-MM-dd'T'HH:mm:ss.SSS'Z'", Timezone="UTC");
 ```
 The first one is not so trivial as it makes impossible to interact with TimeSeries mongoDB collections as well as limiting the time filtered queries on normal collections.
 
