@@ -32,11 +32,11 @@ information
 	```
 4. Do not import the classes or method inside MATLAB functions, instead use the
 full identifier:
-	# Don´t use:
+	* Don´t use:
 	import com.mongodb.client.MongoClients
 	client = MongoClients.create(.....)
 
-	# Instead se:
+	* Instead use:
 	client = com.mongodb.client.MongoClients.create(.....)
 
 ## POM file <a name="pom"></a>
@@ -85,8 +85,6 @@ to find the correct fields for the particular needed library.
 
 
 ## References
-
-
 1. [POM file structure](https://maven.apache.org/pom.html#Plugin_Repositories)
 2. [MATLAB Answers](https://www.mathworks.com/matlabcentral/answers/713843-can-i-load-java-classes-into-matlab-r2020b-using-maven) Can I load Java classes into MATLAB R2020b using Maven? 
 3. [javalibs](https://javalibs.com/) Search Public Maven Repositories
