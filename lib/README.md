@@ -33,15 +33,15 @@ information
 4. Do not import the classes or method inside MATLAB functions, instead use the
 full identifier:
 	* Don´t use:
-	```MATLAB
-	import com.mongodb.client.MongoClients
-	client = MongoClients.create(.....)
-	```
+		```MATLAB
+		import com.mongodb.client.MongoClients
+		client = MongoClients.create(.....)
+		```
 
 	* Instead use:
-	```MATLAB
-	client = com.mongodb.client.MongoClients.create(.....)
-	```
+		```MATLAB
+		client = com.mongodb.client.MongoClients.create(.....)
+		```
 
 ## POM file <a name="pom"></a>
 Generate a pom.xml file with the following structure:
