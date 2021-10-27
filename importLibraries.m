@@ -1,4 +1,4 @@
-function importLibraries(~)
+function importLibraries()
     % This function will add to the java path the .jar 
     % library files located inside a lib folder from the
     % current directory
@@ -11,6 +11,8 @@ function importLibraries(~)
     else
         files = {fileinfo.name};
         for i=1:length(files)
+            % Filter out dot starting named files and include the 
+            % ones containing ".jar" extension
             if ~strcmp(files{i}(1), '.') && contains(files{i}, ".jar")
                 javaaddpath(fullfile( librariesDirectory, files{i} ));
                 fprintf('Imported %s to java path\n', files{i});
