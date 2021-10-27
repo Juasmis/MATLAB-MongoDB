@@ -33,8 +33,10 @@ information
 4. Do not import the classes or method inside MATLAB functions, instead use the
 full identifier:
 	* Don´t use:
+	```MATLAB
 	import com.mongodb.client.MongoClients
-	`client = MongoClients.create(.....)`
+	client = MongoClients.create(.....)
+	```
 
 	* Instead use:
 	`client = com.mongodb.client.MongoClients.create(.....)`
